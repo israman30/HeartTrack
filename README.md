@@ -12,4 +12,4 @@ Welcome to my iOS development repository! 🚀 Here, you'll find projects and co
 
 Feel free to explore, contribute, or reach out! 🎯  
 
-#### All rights reserved. &copy;
+#### All rights reserved &copy;
