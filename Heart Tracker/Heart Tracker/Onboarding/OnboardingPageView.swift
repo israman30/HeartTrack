@@ -42,12 +42,11 @@ struct OnboardingPageView: View {
     var body: some View {
         TabView(selection: $selectedPage) {
             ForEach(pages) { page in
-                VStack {
-                    OnboardingPage(page: Onboarding.listItems[page.tag])
-                        .tag(page.tag)
-                }
+                OnboardingPage(page: Onboarding.listItems[page.tag])
+                    .tag(page.tag)
             }
         }
+        .animation(.easeInOut, value: selectedPage)
         .tabViewStyle(.page(indexDisplayMode: .always))
         .indexViewStyle(.page(backgroundDisplayMode: .always))
     }
