@@ -42,12 +42,22 @@ struct OnboardingPageView: View {
     var body: some View {
         TabView(selection: $selectedPage) {
             ForEach(pages) { page in
-                OnboardingPage(page: Onboarding.listItems[page.tag])
-                    .tag(page.tag)
+                VStack {
+                    OnboardingPage(page: Onboarding.listItems[page.tag])
+                        .tag(page.tag)
+                }
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
         .indexViewStyle(.page(backgroundDisplayMode: .always))
+    }
+    
+    private func incrementPage() {
+        selectedPage = (selectedPage + 1) % pages.count
+    }
+    
+    private func decrementPage() {
+        selectedPage = (selectedPage - 1 + pages.count) % pages.count
     }
 }
 
@@ -60,11 +70,13 @@ struct OnboardingPage: View {
     var page: Onboarding
     
     var body: some View {
-        VStack {
-            Text(page.title)
-                .font(.largeTitle)
-            Text(page.description ?? "")
-                .font(.caption)
+        ZStack {
+            VStack {
+                Text(page.title)
+                    .font(.largeTitle)
+                Text(page.description ?? "")
+                    .font(.caption)
+            }
         }
     }
 }
